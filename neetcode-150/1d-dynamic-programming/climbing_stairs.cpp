@@ -15,3 +15,25 @@ public:
         return dp[n];
     }
 };
+
+/*
+runtime: O(n)
+space: O(1)
+*/
+class Solution {
+public:
+    int climbStairs(int n) {
+        int prev2 = 0;
+        int prev1 = 1;
+
+        for (int k = 1; k <= n; k++) {
+            int curr = 0;
+            curr += prev1;
+            if (k > 1) curr += prev2;
+
+            prev2 = prev1;
+            prev1 = curr;
+        }
+        return prev1;
+    }
+};

@@ -17,7 +17,7 @@ public:
         for (int i = 2; i < size; i++) {
             dp[i] = max(dp[i - 2] + nums[i], dp[i - 1]);
         }
-        return max(dp[size - 1], dp[size - 2]);
+        return dp[size - 1];
     }
 };
 
@@ -42,6 +42,6 @@ public:
             prev2 = prev1;
             prev1 = curr;
         }
-        return max(prev1, prev2);
+        return prev1;
     }
 };

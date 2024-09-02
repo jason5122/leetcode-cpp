@@ -1,7 +1,11 @@
 /*
 e = edges.size()
 runtime: O(n+e)
-space: O(n)
+space: O(n+e)
+
+USED SOLUTION FOR SPACE COMPLEXITY
+
+Remember that it takes O(e) space to store the adjacency list.
 */
 class Solution {
 public:

@@ -59,7 +59,7 @@ n == cols in grid
 runtime: O(m*n)
 space: O(m*n)
 
-To reason about the space complexity, imagine a 1x100 or 2x100 grid.
+To reason about the space complexity, imagine a 2x100 grid.
 */
 class Solution {
 public:

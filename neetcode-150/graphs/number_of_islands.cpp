@@ -78,27 +78,27 @@ public:
 
 private:
     void destroyIslandDfs(vector<vector<char>>& grid, int row, int col) {
-        stack<pair<int, int>> q;
+        stack<pair<int, int>> stk;
 
-        q.push({row, col});
-        while (!q.empty()) {
-            auto [r, c] = q.top();
-            q.pop();
+        stk.push({row, col});
+        while (!stk.empty()) {
+            auto [r, c] = stk.top();
+            stk.pop();
 
             if (r > 0 && grid[r - 1][c] == '1') {
-                q.push({r - 1, c});
+                stk.push({r - 1, c});
                 grid[r - 1][c] = '0';
             }
             if (c > 0 && grid[r][c - 1] == '1') {
-                q.push({r, c - 1});
+                stk.push({r, c - 1});
                 grid[r][c - 1] = '0';
             }
             if (r < grid.size() - 1 && grid[r + 1][c] == '1') {
-                q.push({r + 1, c});
+                stk.push({r + 1, c});
                 grid[r + 1][c] = '0';
             }
             if (c < grid[r].size() - 1 && grid[r][c + 1] == '1') {
-                q.push({r, c + 1});
+                stk.push({r, c + 1});
                 grid[r][c + 1] = '0';
             }
         }

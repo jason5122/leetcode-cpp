@@ -1,5 +1,6 @@
 /*
 USED SOLUTION
+n == nums.size()
 runtime: O(n*lg(n))
 space: O(1)
 */

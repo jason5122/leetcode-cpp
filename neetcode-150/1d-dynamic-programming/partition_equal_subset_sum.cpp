@@ -1,8 +1,10 @@
 /*
+NOT DYNAMIC PROGRAMMING
 TIME LIMIT EXCEEDED
 n == nums.size()
-runtime: O(n^2)
-space: O(n^2)
+sum = accumulate(nums)
+runtime: O(n*sum)
+space: O(n*sum)
 */
 class Solution {
 public:
@@ -74,5 +76,44 @@ public:
         }
 
         return dp[0][sum / 2];
+    }
+};
+
+/*
+USED SOLUTION
+NOT DYNAMIC PROGRAMMING
+n == nums.size()
+sum = accumulate(nums)
+runtime: O(n*sum)
+space: O(n*sum)
+*/
+class Solution {
+public:
+    using Memo = vector<vector<optional<bool>>>;
+
+    bool canPartition(vector<int>& nums) {
+        int n = nums.size();
+
+        this->nums = nums;
+        sum = accumulate(nums.begin(), nums.end(), 0);
+        memo = Memo(n + 1, vector<optional<bool>>(sum + 1, nullopt));
+
+        if (sum % 2 == 1) return false;
+
+        return helper(0, 0);
+    }
+
+private:
+    vector<int> nums;
+    int sum;
+    Memo memo;
+
+    bool helper(int i, int j) {
+        if (i == nums.size()) return j == sum / 2;
+        if (memo[i][j]) return *memo[i][j];
+
+        bool result = helper(i + 1, j + nums[i]) || helper(i + 1, j);
+        memo[i][j] = result;
+        return result;
     }
 };

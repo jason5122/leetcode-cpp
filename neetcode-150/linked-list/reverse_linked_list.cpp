@@ -61,3 +61,42 @@ public:
         return new_head;
     }
 };
+
+/*
+n == # of nodes
+runtime: O(n)
+space: O(n)
+*/
+class Solution {
+public:
+    ListNode* reverseList(ListNode* head) {
+        ListNode* prev = nullptr;
+        ListNode* curr = head;
+        while (curr) {
+            ListNode* next = curr->next;
+            curr->next = prev;
+            prev = curr;
+            curr = next;
+        }
+        return prev;
+    }
+};
+
+/*
+n == # of nodes
+runtime: O(n)
+space: O(n)
+*/
+class Solution {
+public:
+    ListNode* reverseList(ListNode* head) {
+        if (!head || !head->next) return head;
+
+        ListNode* curr = head;
+        ListNode* next = reverseList(curr->next);
+
+        curr->next->next = curr;
+        curr->next = nullptr;
+        return next;
+    }
+};

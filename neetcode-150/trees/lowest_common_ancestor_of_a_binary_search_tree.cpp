@@ -49,3 +49,34 @@ private:
         return memo[root] = root == node || in_left || in_right;
     }
 };
+
+/*
+n == # of nodes
+runtime: O(n)
+space: O(n)
+*/
+class Solution {
+public:
+    TreeNode* ans = nullptr;
+
+    TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
+        helper(root, p, q, INT_MIN, INT_MAX);
+        return ans;
+    }
+
+private:
+    void helper(TreeNode* root, TreeNode* p, TreeNode* q, int max_left, int min_right) {
+        if (!root) return;
+        if (p->val < max_left || p->val > min_right) return;
+        if (q->val < max_left || q->val > min_right) return;
+
+        if (root == p || root == q) {
+            ans = root;
+            return;
+        }
+
+        ans = root;
+        helper(root->left, p, q, max_left, root->val);
+        helper(root->right, p, q, root->val, min_right);
+    }
+};

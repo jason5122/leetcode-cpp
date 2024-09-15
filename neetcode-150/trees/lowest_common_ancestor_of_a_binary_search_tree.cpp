@@ -133,3 +133,30 @@ public:
         return root;  // Unreachable.
     }
 };
+
+/*
+USED SOLUTION
+n == # of nodes
+runtime: O(n)
+space: O(1)
+*/
+class Solution {
+public:
+    TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
+        TreeNode* curr = root;
+        while (curr) {
+            int val = curr->val;
+            int p_val = p->val;
+            int q_val = q->val;
+
+            if (p_val < val && q_val < val) {
+                curr = curr->left;
+            } else if (p_val > val && q_val > val) {
+                curr = curr->right;
+            } else {
+                return curr;
+            }
+        }
+        return root;  // Unreachable.
+    }
+};

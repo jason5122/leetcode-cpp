@@ -80,3 +80,56 @@ private:
         helper(root->right, p, q, root->val, min_right);
     }
 };
+
+/*
+USED SOLUTION
+n == # of nodes
+runtime: O(n)
+space: O(n)
+*/
+class Solution {
+public:
+    TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
+        int val = root->val;
+        int p_val = p->val;
+        int q_val = q->val;
+
+        if (p_val < val && q_val < val) {
+            return lowestCommonAncestor(root->left, p, q);
+        }
+        if (p_val > val && q_val > val) {
+            return lowestCommonAncestor(root->right, p, q);
+        }
+        return root;
+    }
+};
+
+/*
+n == # of nodes
+runtime: O(n)
+space: O(n)
+*/
+class Solution {
+public:
+    TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
+        stack<TreeNode*> stk;
+        stk.push(root);
+        while (!stk.empty()) {
+            auto node = stk.top();
+            stk.pop();
+
+            int val = node->val;
+            int p_val = p->val;
+            int q_val = q->val;
+
+            if (p_val < val && q_val < val) {
+                stk.push(node->left);
+            } else if (p_val > val && q_val > val) {
+                stk.push(node->right);
+            } else {
+                return node;
+            }
+        }
+        return root;  // Unreachable.
+    }
+};

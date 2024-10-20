@@ -44,3 +44,35 @@ private:
         return (i % n + n) % n;
     }
 };
+
+/*
+USED SOLUTION
+n == nums.size()
+runtime: O(n)
+space: O(n)
+*/
+class Solution {
+public:
+    int subarraysDivByK(vector<int>& nums, int k) {
+        int n = nums.size();
+
+        unordered_map<int, int> mod_group;
+        mod_group[0] = 1;
+
+        vector<int> prefix(n, 0);
+        partial_sum(nums.begin(), nums.end(), prefix.data());
+
+        int ans = 0;
+        for (int a : prefix) {
+            int mod = positive_modulo(a, k);
+            ans += mod_group[mod];
+            mod_group[mod]++;
+        }
+        return ans;
+    }
+
+private:
+    inline int positive_modulo(int i, int n) {
+        return (i % n + n) % n;
+    }
+};

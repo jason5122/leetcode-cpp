@@ -1,3 +1,8 @@
+/*
+n == intervals.size()
+runtime: O(n*lg(n))
+space: O(1)
+*/
 class Solution {
 public:
     int eraseOverlapIntervals(vector<vector<int>>& intervals) {

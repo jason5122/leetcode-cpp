@@ -1,7 +1,9 @@
 /*
 n == nums.size()
-runtime: O(2^n)
+runtime: O(n*2^n)
 space: O(n)
+
+Copying the subsets over takes O(n) time.
 */
 class Solution {
 public:

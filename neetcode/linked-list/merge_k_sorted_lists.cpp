@@ -17,13 +17,13 @@ public:
             }
         }
 
-        ListNode* dummy = new ListNode();
-        ListNode* curr = dummy;
+        ListNode* head = new ListNode();
+        ListNode* curr = head;
         while (!pq.empty()) {
             curr->next = new ListNode(pq.top());
             pq.pop();
             curr = curr->next;
         }
-        return dummy->next;
+        return head->next;
     }
 };

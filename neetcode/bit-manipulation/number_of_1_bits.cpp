@@ -1,8 +1,8 @@
 /*
-runtime: O(1)
+runtime: O(32)
 space: O(1)
 
-There are 32 bits at maximum in an int, which gives this a O(1) runtime complexity.
+There are 32 bits at maximum in an int.
 */
 class Solution {
 public:
@@ -18,10 +18,10 @@ public:
 
 /*
 USED SOLUTION
-runtime: O(1)
+runtime: O(32)
 space: O(1)
 
-There are 32 bits at maximum in an int, which gives this a O(1) runtime complexity.
+There are 32 bits at maximum in an int.
 */
 class Solution {
 public:

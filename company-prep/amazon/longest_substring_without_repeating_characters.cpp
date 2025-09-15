@@ -1,3 +1,8 @@
+/*
+n == s.length()
+runtime: O(n)
+space: O(n)
+*/
 class Solution {
 public:
     int lengthOfLongestSubstring(string s) {
